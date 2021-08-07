@@ -17,7 +17,7 @@ class Filters extends BaseConfig {
     // Always applied before every request
     public $globals = [
         'before' => [
-            'auth' => ['except' => ['/', 'login', 'auth/login', 'reset_password','register','register/confirm/*','register/save','register/mailConfermaBrowser/*','register/changePassword/*','reset_password/mailResetPassword/*','auth/resetPassword','changepassword/*','login/logout']]
+            'auth' => ['except' => ['/', 'login', 'auth/login', 'reset_password','register','register/confirm/*','register/save','register/mailConfermaBrowser/*','register/changePassword/*','reset_password/mailResetPassword/*','auth/resetPassword','changepassword/*','auth/changePassword/*', 'login/logout', 'auth/save']]
         //'honeypot'
         // 'csrf',
         ],

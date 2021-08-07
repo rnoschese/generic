@@ -54,7 +54,7 @@
                                 </div>
                                 <?php $uri = service('uri');?>
                                 
-                                <form role="form" method="post" action="<?= site_url('register/changePassword/' . $uri->getSegment(2)); ?>" id="frm_register">
+                                <form role="form" method="post" action="<?= site_url('auth/changePassword/' . $uri->getSegment(2)); ?>" id="frm_register">
                                     <div class="form-group"> 
                                         <label for="pw1">Password</label>
                                         <i class="fa fa-lock"></i>

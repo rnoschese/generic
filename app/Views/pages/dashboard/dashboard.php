@@ -32,7 +32,26 @@
 
                 <div class="row">
                     <div class="col-sm-12">
+                        <?php
+                        $data = array(
+                                'indirizzi' =>
+                                array(
+                                        'indirizzo_abitazione' =>
+                                        array(
+                                            'tipo' => 'Abitazione',
+                                            'default' => true,
+                                            'indirizzo_completo' => 'xxx',
+                                            'via' => 'xxx',
+                                            'civico' => 'xxx',
+                                            'comune' => 'xxx',
+                                            'cap' => 'xxx',
+                                            'provincia' => 'xxx',
+                                            'regione' => 'xxx',
+                                        )
+                                )
+                        )
 
+                        ?>
                     </div>
                 </div>
                 <!-- /PAGE HEADER -->

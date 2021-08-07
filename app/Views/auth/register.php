@@ -46,7 +46,7 @@
                             <div class="login-box-plain">
                                 <h2 class="bigintro">Register</h2>
                                 <div class="divide-40"></div>
-                                <form role="form" method="post" action="register/save" id="frm_register">
+                                <form role="form" method="post" action="auth/save" id="frm_register">
                                     <div class="form-group">
                                         <label for="exampleInputName">Nome</label>
                                         <i class="fa fa-font"></i>
@@ -65,31 +65,14 @@
                                     <div class="form-group"> 
                                         <label for="exampleInputPassword1">Password</label>
                                         <i class="fa fa-lock"></i>
-                                        <input type="password" class="form-control" id="exampleInputPassword1" name="password" >
+                                        <input type="password" class="form-control" id="exampleInputPassword1" >
                                     </div>
                                     <div class="form-actions">
-                                        <label class="checkbox"> <input type="checkbox" class="uniform" value=""> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                                        <label class="checkbox"> <div class="checker"><span><input type="checkbox" class="uniform" value=""></span></div> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
                                         <button type="submit" class="btn btn-success" id="btn_submit">Sign Up</button>
                                     </div>
                                 </form>
-                                <!-- SOCIAL REGISTER -->
-                                <div class="divide-20"></div>
-                                <div class="center">
-                                    <strong>Or register using your social account</strong>
-                                </div>
-                                <div class="divide-20"></div>
-                                <div class="social-login center">
-                                    <a class="btn btn-primary btn-lg">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                    <a class="btn btn-info btn-lg">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                    <a class="btn btn-danger btn-lg">
-                                        <i class="fa fa-google-plus"></i>
-                                    </a>
-                                </div>
-                                <!-- /SOCIAL REGISTER -->
+
                                 <div class="login-helpers">
                                     <a href="login"> Effettua il login</a> <br>
                                 </div>
@@ -125,6 +108,7 @@
             });
             
             jQuery('#btn_submit').on('click',this,function(e){
+                e.preventDefault();
                 jQuery('<input/>',{
                     val: hex_sha512(jQuery('#exampleInputPassword1').val()),
                     type: 'hidden',
@@ -132,6 +116,7 @@
                 }).appendTo('#frm_register');
                 
                 jQuery('#exampleInputPassword1').val('');
+                $('#frm_register').submit();
             });
         </script>
     </body>

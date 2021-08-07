@@ -84,24 +84,7 @@
                                         <button type="submit" class="btn btn-danger" id="btn_submit">Submit</button>
                                     </div>
                                 </form>
-                                <!-- SOCIAL LOGIN -->
-                                <div class="divide-20"></div>
-                                <div class="center">
-                                    <strong>Or login using your social account</strong>
-                                </div>
-                                <div class="divide-20"></div>
-                                <div class="social-login center">
-                                    <a class="btn btn-primary btn-lg">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                    <a class="btn btn-info btn-lg">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                    <a class="btn btn-danger btn-lg">
-                                        <i class="fa fa-google-plus"></i>
-                                    </a>
-                                </div>
-                                <!-- /SOCIAL LOGIN -->
+
                                 <div class="login-helpers">
                                     <a href="reset_password">Password dimenticata?</a> <br>
                                     Non hai ancora un account? <a href="register">Registrati ora!</a>

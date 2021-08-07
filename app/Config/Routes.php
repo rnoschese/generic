@@ -36,7 +36,6 @@ $routes->get('/reset_password', 'Auth::reset_password');
 $routes->get('/register', 'Auth::register');
 $routes->get('/register/confirm/(:segment)', 'Auth::confirm/$1');
 $routes->get('/register/mailConfermaBrowser/(:segment)', 'Auth::mailConfermaBrowser/$1');
-$routes->get('/register/changePassword/(:segment)', 'Auth::change_password/$1');
 $routes->get('/reset_password/mailResetPassword/(:segment)', 'Auth::mailResetPassword/$1');
 $routes->get('/changepassword/(:segment)', 'Auth::change_password');
 $routes->get('/login/logout', 'Auth::logout');
