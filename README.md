@@ -72,3 +72,62 @@ ___
 ```
 
 ### PHP (app/Controllers/Datatables)
+
+___
+# TEMPLATE
+
+Il template è gestito dall'helper view_template (app/Helpers/template_helper.php)\
+
+    ```
+        public function index() {
+          $page = 'dashboard/dashboard'; //controller::view
+          $data['title'] = 'Dashboard'; //titolo della pagina 
+          $data['description'] = 'Pannello di controllo'; // descrizione della pagina
+
+          $data['data_array'] = $_ENV; // array di dati da passare alla pagina
+
+          view_template($page, $data);
+        }
+    ```
+L'helper view_template, oltre alla visualizzazione della pagina ed ai parametri inviati, gestisce la funzione _get_menu_ (da aggiornare con le pagine che verranno aggiunte) e la funzione _breadcrumb_
+___
+#### get_menu
+La funzione _get_menu_ restituisce un'array che deve essere aggiornata manualmente
+
+```
+if (!function_exists('getMenu')) {
+    function getMenu($page = 'dashboard')
+    {
+
+        $menu = array(
+            array(//primo livello
+                'nome' => 'Dashboard', //nome della pagina
+                'url' => 'dashboard', //url della pagina
+                'active' => $page === 'dashboard/dashboard' ? 'active' : '', //attiva pagina nel menu
+                'icon' => 'fa-tachometer', //icona del menu
+                'sottoMenu' => array()
+            ),
+            array(
+                'nome' => 'Servizio',
+                'url' => 'servizio',
+                'icon' => 'fas fa-key',
+                'sottoMenu' => array(
+                    array( //menu di secondo livello
+                        'nome' => 'Setup permessi (dev)',
+                        'url' => 'authorizations/authorizations_edit',
+                        'active' => $page === 'authorizations/authorizations_edit' ? 'active' : ''
+                    ),
+                    array(
+                        'nome' => 'Gestione permessi',
+                        'url' => 'authorizations/authorizations_management',
+                        'active' => $page === 'authorizations/authorizations_management' ? 'active' : ''
+                    ),
+                )
+            )
+        );
+
+        return $menu;
+    }
+}
+```
+___
