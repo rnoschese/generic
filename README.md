@@ -2,8 +2,8 @@
 
 ## CONNESSIONE DB 
 
-HOST: 62.149.181.41<br>
-USERNAME: **_mysql_generic_**<br>
+HOST: 62.149.181.41\
+USERNAME: **_mysql_generic_**\
 PASSWORD: **_9eRRA1dAfOzqu8gs_**
 
 ## PLUGIN
@@ -15,9 +15,9 @@ PASSWORD: **_9eRRA1dAfOzqu8gs_**
 <select id="select_test" name="test" class="form-control" style="width: 100%"></select>
 ```
 #### jQuery
-Utilizzo:
-L'url deve puntare a classe/funzione <br>
-addNew se impostato su true permette di aggiungere option alla select (valore di default false)
+Utilizzo:\
+L'url deve puntare a classe/funzione\
+addNew se impostato su true permette di aggiungere option alla select (valore di default false)\
 ```
 $('#select_test').select2Ajax({
     url: '../select2/test',<br>
@@ -42,3 +42,33 @@ ___
     </thead>
 </table>
 ```
+### jQuery
+
+```
+        function setup_dt() {
+            $('#authorizations').DataTable({
+                "aaSorting": [[0, 'desc']],
+                "fnDrawCallback": function (oSettings) {
+                    $('.tip').tooltip();
+                },
+                "ajax": {
+                    "url": '../../datatables/authorizations',
+                    "type": "POST",
+                    "data": function (d) {
+                        d.modulo = $('#select_modulo').val();
+                        d.oggetto = $('#select_oggetto').val();
+                    }
+                },
+                "columns": [
+                    {data: 0, width: '10px'},
+                    {data: 1},
+                    {data: 2},
+                    {data: 3},
+                ]
+            });
+        }
+
+        LoadDataTables(setup_dt, 'permessi');
+```
+
+### PHP (app/Controllers/Datatables)
