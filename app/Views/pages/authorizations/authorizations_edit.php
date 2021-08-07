@@ -44,8 +44,7 @@
                                 <form class="form" id="formSubmit" action="#">
                                     <div class="form-group">
                                         <label>Modulo</label>
-                                        <select id="select_modulo" name="modulo" class="form-control"
-                                                style="width: 100%"></select><br>
+                                        <select id="select_modulo" name="modulo" class="form-control" style="width: 100%"></select><br>
                                     </div>
 
                                     <div class="form-group">
