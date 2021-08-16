@@ -152,12 +152,6 @@ jQuery.fn.extend({
     }
 });
 
-function resetForm($form) {
-    $form.find('input:text, input:password, input:file, select, textarea').val('');
-    $form.find('input:radio, input:checkbox').removeAttr('checked').removeAttr('selected');
-    $form.find('select').empty().trigger('change');
-}
-
 jQuery.fn.extend({
     resetForm: function () {
         'use strict';
@@ -169,6 +163,9 @@ jQuery.fn.extend({
         $form.find('select').empty().trigger('change');
     }
 });
+
+
+
 
 
 

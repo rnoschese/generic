@@ -101,6 +101,8 @@ class Datatables extends BaseController {
 
         $primaryKey = 'id';
 
+        $auth = new Authorizations();
+
         $columns = array(
             array('db' => 'id', 'dt' => 0, 'field' => 'id'),
             array('db' => 'modulo', 'dt' => 1, 'field' => 'modulo'),
@@ -115,6 +117,30 @@ class Datatables extends BaseController {
                     return $str;
                 }
             ),
+            array(
+                'db' => 'id',
+                'dt' => 5,
+                'field' => 'id',
+                'formatter' => function($d, $row) use ($auth, $request) {
+
+                    $str = '<div class="make-switch switch-mini" data-on="success" data-off="danger" data-toggle="switch"><input type="checkbox" disabled="true"></div>';
+                    $checked = '';
+                    if(!empty($request->getVar("user_id"))){
+                        if(!empty($request->getVar("permessi"))){
+                            $val = $auth->authorization(
+                                array(
+                                    'permessi' => $request->getVar('permessi'),
+                                    'key' => $d
+                                )
+                            );
+                            $checked = $val === true ? 'checked = "checked" ' : '';
+                        }
+                        $str = '<div class="make-switch switch-mini" data-on="success" data-off="danger" data-toggle="switch"><input class="switchAuth" data-key="'.$d.'" type="checkbox" '.$checked.'></div>';
+                    }
+
+                    return '<div style="text-align: center; width: 100%">'.$str.'</div>';
+                }
+            ),
         );
 
         $sql_details = $this->datatables_details();
@@ -122,8 +148,8 @@ class Datatables extends BaseController {
         $joinQuery = " FROM `{$table}` ";
 
         $extraWhere = " 1 ";
-        $extraWhere .= $request->getVar("modulo") !== "" ? " AND modulo = '".$request->getVar("modulo")."' " : "";
-        $extraWhere .= $request->getVar("oggetto") !== "" ? " AND oggetto = '".$request->getVar("oggetto")."' " : "";
+        $extraWhere .= !empty($request->getVar("modulo")) ? " AND modulo = '".$request->getVar("modulo")."' " : "";
+        $extraWhere .= !empty($request->getVar("oggetto")) ? " AND oggetto = '".$request->getVar("oggetto")."' " : "";
 
         $groupBy = '';
 
